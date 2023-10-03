@@ -1,12 +1,10 @@
 import streamlit as st
 
 def show():
-    st.header("Welcome to the Sales Forecast")
 
-    # App Description
     st.markdown(
         """
-        This app allows you to forecast sales for various products using time series analysis.
+        This app allows you to perform forecast sales for various products using machine learning using Prophet model which runs on top of ```sklearn```.
         You can upload your sales dataset, preprocess the data, make forecasts, and generate reports.
 
         **How to Use:**

@@ -87,14 +87,14 @@ try:
     # Download buttons for existing forecast files
     st.sidebar.download_button(
         label="Download Sum Pc Values (CSV)",
-        data=sum_pc_csv,
+        data=sum_pc_csv.T,
         file_name="Sum_pc_general_forecast.csv",
         mime="text/csv",
     )
 
     st.sidebar.download_button(
         label="Download Sum Uc Values (CSV)",
-        data=sum_uc_csv,
+        data=sum_uc_csv.T,
         file_name="Sum_uc_general_forecast.csv",
         mime="text/csv",
     )
