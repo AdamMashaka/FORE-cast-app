@@ -3,7 +3,6 @@ import pandas as pd
 
 from utils.forecast import make_forecast
 
-
 st.title("General Forecast")
 st.write("Forecast for the entire dataset📈")
 
@@ -60,25 +59,39 @@ try:
         st.subheader("Sum UC Forecast Plot")
         st.line_chart(sum_uc_df)
 
-        # download the forecast values as csv
-        csv = sum_pc_df.T.to_csv(index=True)
-        st.download_button(
-            label="Download Sum Pc Values (CSV)",
-            data=csv,
-            file_name="Sum_pc_general_forecast.csv",
-            mime="text/csv",
-        )
+        # save the forecast as csv
+        sum_pc_df.to_csv("data/forecast/sum_pc_general_forecast.csv")
+        sum_uc_df.to_csv("data/forecast/sum_uc_general_forecast.csv")
 
-        csv_ = sum_uc_df.T.to_csv(index=True)
-        st.download_button(
-            label="Download Sum Uc Values (CSV)",
-            data=csv_,
-            file_name="Sum_uc_general_forecast.csv",
-            mime="text/csv",
-        )
-
-        progress_text.text("Data ready to download 🎉!")
+        progress_text.text("Data ready to download 🎉!, Refresh page!!!")
 
 except FileNotFoundError:
     st.error("Please upload the sales data first!")
     st.stop()
+
+st.sidebar.write("---")
+try:
+    # Read the forecast files
+    sum_pc_df_existing = pd.read_csv("data/forecast/sum_pc_general_forecast.csv", index_col=0)
+    sum_uc_df_existing = pd.read_csv("data/forecast/sum_uc_general_forecast.csv", index_col=0)
+
+    # Convert DataFrames to CSV strings
+    sum_pc_csv = sum_pc_df_existing.to_csv(index=True)
+    sum_uc_csv = sum_uc_df_existing.to_csv(index=True)
+
+    # Download buttons for existing forecast files
+    st.sidebar.download_button(
+        label="Download Sum Pc Values (CSV)",
+        data=sum_pc_csv,
+        file_name="Sum_pc_general_forecast.csv",
+        mime="text/csv",
+    )
+
+    st.sidebar.download_button(
+        label="Download Sum Uc Values (CSV)",
+        data=sum_uc_csv,
+        file_name="Sum_uc_general_forecast.csv",
+        mime="text/csv",
+    )
+except:
+    st.sidebar.write("There are no forecast files to display. Please make a forecast first.")
