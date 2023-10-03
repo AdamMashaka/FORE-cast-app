@@ -43,7 +43,7 @@ try:
 
                         st.success("Forecast generated successfully!")
                         st.subheader(f"{forecast_type} forecast Data for {product}")
-                        st.line_chart(forecast_values[forecast_values.columns.tolist()])
+                        st.line_chart(forecast_values[["Forecast","Optimal Forecast"]])
 
                         # table to show the forecast values
                         forecasted_table_values = forecast_values.T

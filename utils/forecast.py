@@ -15,7 +15,7 @@ def make_forecast(dataframe, product, days_to_forecast):
     forecast_values['yhat_lower'] = forecast_values['yhat_lower'].astype(int)
     forecast_values['yhat_upper'] = forecast_values['yhat_upper'].astype(int)
     forecast_values.set_index('ds', inplace=True)
-    forecast_values.columns = ['Forecast', 'Lower Limit', 'Upper Limit']
+    forecast_values.columns = ['Forecast', 'Lower Limit', 'Optimal Forecast']
 
 
     return forecast_values
