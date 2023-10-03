@@ -4,7 +4,7 @@ def show():
 
     st.markdown(
         """
-        This app allows you to perform forecast sales for various products using machine learning using Prophet model which runs on top of ```sklearn```.
+        This app allows you to perform sales forecast for various products using machine learning with Prophet model which runs on top of ```sklearn```.
         You can upload your sales dataset, preprocess the data, make forecasts, and generate reports.
 
         **How to Use:**
