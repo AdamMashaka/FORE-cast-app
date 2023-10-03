@@ -65,8 +65,8 @@ try:
         st.line_chart(sum_uc_df)
 
         # save the forecast as csv
-        sum_pc_df.to_csv("data/forecast/sum_pc_general_forecast.csv")
-        sum_uc_df.to_csv("data/forecast/sum_uc_general_forecast.csv")
+        sum_pc_df.T.to_csv("data/forecast/sum_pc_general_forecast.csv")
+        sum_uc_df.T.to_csv("data/forecast/sum_uc_general_forecast.csv")  # [column name X Date ]
 
         progress_text.text("Data ready to download 🎉!, Refresh page!!!")
 
@@ -87,14 +87,14 @@ try:
     # Download buttons for existing forecast files
     st.sidebar.download_button(
         label="Download Sum Pc Values (CSV)",
-        data=sum_pc_csv.T,
+        data=sum_pc_csv,
         file_name="Sum_pc_general_forecast.csv",
         mime="text/csv",
     )
 
     st.sidebar.download_button(
         label="Download Sum Uc Values (CSV)",
-        data=sum_uc_csv.T,
+        data=sum_uc_csv,
         file_name="Sum_uc_general_forecast.csv",
         mime="text/csv",
     )
