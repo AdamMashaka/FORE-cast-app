@@ -3,6 +3,10 @@ import pandas as pd
 
 from utils.forecast import make_forecast
 
+st.set_page_config(
+    page_title="Single Product Forecast",
+    page_icon="assets/favicon.png",
+)
 
 st.title("Forecast")
 st.write("Welcome to the Forecast page! 📈")

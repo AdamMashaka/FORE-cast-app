@@ -3,6 +3,11 @@ import pandas as pd
 
 from utils.forecast import make_forecast
 
+st.set_page_config(
+    page_title="General Forecast",
+    page_icon="assets/favicon.png",
+)
+
 st.title("General Forecast")
 st.write("Forecast for the entire dataset📈")
 

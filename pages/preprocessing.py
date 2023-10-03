@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 from utils.preprocess import preprocess_raw_dataset
 
+st.set_page_config(
+    page_title="Data Preprocessing",
+    page_icon="assets/favicon.png",
+)
 
 st.title("Data Preprocessing")
 st.header("Update Dataset")

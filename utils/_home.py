@@ -1,7 +1,7 @@
 import streamlit as st
 
 def show():
-    st.header("Welcome to the Sales Forecasting App")
+    st.header("Welcome to the Sales Forecast")
 
     # App Description
     st.markdown(
