@@ -36,14 +36,18 @@ try:
                     try:
                         if forecast_type == "Sum PC":
                             forecast_values = make_forecast(pc_sums, product, days_to_forecast)
-                            historical_values = pc_sums[product].values.tolist()[-past_days:]
+                            historical_values = pc_sums[product].tail(past_days)
                         else:
                             forecast_values = make_forecast(uc_sums, product, days_to_forecast)
-                            historical_values = uc_sums[product].values.tolist()[-past_days:]
+                            historical_values[product] = uc_sums[product].tail(past_days)
+
+
 
                         st.success("Forecast generated successfully!")
                         st.subheader(f"{forecast_type} forecast Data for {product}")
-                        st.line_chart(forecast_values[["Forecast","Optimal Forecast"]])
+                        # column rename
+                        forecast_values.columns = ["Lower Forecast", "Lower Limit", "Optimal Forecast"]
+                        st.line_chart(forecast_values[["Lower Forecast","Optimal Forecast"]])
 
                         # table to show the forecast values
                         forecasted_table_values = forecast_values.T
