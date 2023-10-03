@@ -32,7 +32,7 @@ try:
         if product:
             if forecast_type:
                 if days_to_forecast:
-                    past_days = 90
+                    past_days = 10
                     try:
                         if forecast_type == "Sum PC":
                             forecast_values = make_forecast(pc_sums, product, days_to_forecast)
@@ -40,9 +40,6 @@ try:
                         else:
                             forecast_values = make_forecast(uc_sums, product, days_to_forecast)
                             historical_values = uc_sums[product].values.tolist()[-past_days:]
-
-                        st.write(f"{product} {forecast_type} trend for past {past_days} days")
-                        st.line_chart(historical_values)
 
                         st.success("Forecast generated successfully!")
                         st.subheader(f"{forecast_type} forecast Data for {product}")
@@ -53,6 +50,9 @@ try:
 
                         st.subheader(f"{forecast_type} forecast values for {product}")
                         st.table(forecasted_table_values)
+
+                        st.write(f"{product} {forecast_type} trend for past {past_days} days")
+                        st.line_chart(historical_values)
 
                         try:
                             # download the forecast values as csv
