@@ -8,8 +8,8 @@ st.set_page_config(
     page_icon="assets/favicon.png",
 )
 
-st.title("Forecast")
-st.write("Welcome to the Forecast page! 📈")
+st.title("Machine Learning Forecast")
+st.write("Single SKU Forecast 📈")
 
 
 try:
@@ -69,18 +69,6 @@ try:
                             )
                         except:
                             st.error("Failed to generate CSV file download link.")
-
-                        try:
-                            # download the forecast values as excel
-                            excel = forecasted_table_values.to_excel(index=True)
-                            st.download_button(
-                                label="Download Forecast Values (Excel)",
-                                data=excel,
-                                file_name=f"{product}_{forecast_type}_forecast.xlsx",
-                                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                            )
-                        except:
-                            st.error("Failed to generate Excel file download link.")
 
                     except:
                         st.error("An error occurred while making the forecast.")

@@ -8,8 +8,8 @@ st.set_page_config(
     page_icon="assets/favicon.png",
 )
 
-st.title("General Forecast")
-st.write("Forecast for the entire dataset📈")
+st.title("Machine Learning - Portfolio Forecast")
+st.write("Forecast for all SKU's in dataset📈")
 
 try:
     pc_sums = pd.read_csv("data/processed/pc_sums.csv", index_col=0)
