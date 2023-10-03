@@ -50,7 +50,7 @@ try:
                         st.line_chart(forecast_values[["Lower Forecast","Optimal Forecast"]])
 
                         # table to show the forecast values
-                        forecasted_table_values = forecast_values.T
+                        forecasted_table_values = forecast_values[["Lower Forecast","Optimal Forecast"]].T
 
                         st.subheader(f"{forecast_type} forecast values for {product}")
                         st.table(forecasted_table_values)
