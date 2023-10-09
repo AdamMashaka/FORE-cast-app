@@ -46,16 +46,21 @@ try:
                         st.success("Forecast generated successfully!")
                         st.subheader(f"{forecast_type} forecast Data for {product}")
                         # column rename
-                        forecast_values.columns = ["Lower Forecast", "Lower Limit", "Optimal Forecast"]
+                        forecast_values.columns = ["Lower Forecast", "Lower Limit", "Optimal Forecast", "Stock Amount"]
                         st.line_chart(forecast_values[["Lower Forecast","Optimal Forecast"]])
+
 
                         # table to show the forecast values
                         forecasted_table_values = forecast_values[["Lower Forecast","Optimal Forecast"]].T
-
-                        st.subheader(f"{forecast_type} forecast values for {product}")
                         st.table(forecasted_table_values)
 
-                        st.write(f"{product} {forecast_type} trend for past {past_days} days")
+                        # Stock Amount
+                        st.subheader(f"Forecast Stock Amount for {product}")
+                        st.bar_chart(forecast_values[['Stock Amount']])
+                        st.table(forecast_values[['Stock Amount']].T)
+
+
+                        st.subheader(f"{product} {forecast_type} trend for past {past_days} days")
                         st.line_chart(historical_values)
 
                         try:
